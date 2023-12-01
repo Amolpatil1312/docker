@@ -53,6 +53,14 @@ public class EmployeeController {
         return findall().stream().sorted(Comparator.comparing(Employee::getEmpName)).toList();
     }
 
+    //adde third times
+    @GetMapping("/filterbysalary")
+    public List<Employee> filterbysalary() throws ParseException {
+        return findall().stream().filter(emp->emp.getEmpSalary()>=50000).collect(Collectors.toList());
+    }
+
+
+
 
 
 }
