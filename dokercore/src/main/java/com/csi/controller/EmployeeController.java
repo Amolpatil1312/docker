@@ -43,9 +43,16 @@ public class EmployeeController {
 
     //added api for shor by salary...here by feature branch
     @GetMapping("/sortbysalary")
-    public List<Employee> findbyName(@PathVariable String empName) throws ParseException {
+    public List<Employee> findbysalary() throws ParseException {
         return findall().stream().sorted(Comparator.comparing(Employee::getEmpSalary)).toList();
     }
+
+    //add second time
+    @GetMapping("/sortbyname")
+    public List<Employee> findbyName() throws ParseException {
+        return findall().stream().sorted(Comparator.comparing(Employee::getEmpName)).toList();
+    }
+
 
 
 }
