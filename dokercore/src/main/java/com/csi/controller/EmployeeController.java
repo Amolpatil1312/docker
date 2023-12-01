@@ -53,11 +53,19 @@ public class EmployeeController {
         return findall().stream().sorted(Comparator.comparing(Employee::getEmpName)).toList();
     }
 
-    //adde third times
+    //added third times
     @GetMapping("/filterbysalary")
     public List<Employee> filterbysalary() throws ParseException {
         return findall().stream().filter(emp->emp.getEmpSalary()>=50000).collect(Collectors.toList());
     }
+
+    //added forth method sort by dob from feature branch
+    @GetMapping("/sortbydob")
+    public List<Employee> sortByDOB() throws ParseException {
+        return findall().stream().sorted(Comparator.comparing(Employee::getEmpDob)).toList();
+    }
+
+
 
 
 
