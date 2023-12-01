@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -44,9 +41,10 @@ public class EmployeeController {
         return findall().stream().filter(emp->emp.getEmpId()==empId).collect(Collectors.toList()).get(0);
     }
 
-    @GetMapping("/findbyname/{empName}")
+    //added api for shor by salary...here by feature branch
+    @GetMapping("/sortbysalary")
     public List<Employee> findbyName(@PathVariable String empName) throws ParseException {
-        return findall().stream().filter(emp->emp.getEmpName().equals(empName)).collect(Collectors.toList());
+        return findall().stream().sorted(Comparator.comparing(Employee::getEmpSalary)).toList();
     }
 
 
